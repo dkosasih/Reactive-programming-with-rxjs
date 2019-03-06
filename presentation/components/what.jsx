@@ -52,11 +52,11 @@ const WhatIs = () => {
                 </List>
             </Appear>
             <Notes>
-                👉 Think of it like cars in traffic light - once red it's subscribed <br />
+                🎓 What is RxJS<br />
+                👉 Think of it like cars in traffic light - once green - it's subscribed <br />
                 👉 It flows overtime <br />
-                👉 it can be directed to the directions - road block for example <br />
-                👉 it can be directed to the directions - road block for example <br />
-                👉 [List Item]
+                👉 it can be directed to the other directions using operators<br />
+                👉 [Next] - [List Item]<br />
                 👉 It has a few implementation in various languages like Rx C, Rx Java, Rx c# etc <br />
             </Notes>
         </Container>

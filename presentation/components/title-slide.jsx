@@ -7,12 +7,9 @@ import {
     Image,
     Slide,
 } from 'spectacle';
-import {Container, Row, Column, ColumnSmall, Footer,  } from './layout.jsx';
 
-const images = {
-    rxLogo: require('../../assets/rxjs.png'),
-    profile: require('../../assets/profile.png')
-};
+import { Container, Row, Column, ColumnSmall, Footer, } from './layout.jsx';
+import { images } from './images.js';
 
 const Title = () => {
     return (
@@ -24,7 +21,7 @@ const Title = () => {
                     </ColumnSmall>
                     <Column>
                         <Heading size={1} fit lineHeight={1} textColor="secondary">
-                            RxJS in a Nutshell
+                            Reactive programming with RxJS
                         </Heading>
                     </Column>
                 </Row>
