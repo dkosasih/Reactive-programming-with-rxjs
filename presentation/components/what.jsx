@@ -48,7 +48,7 @@ const WhatIs = () => {
             <Appear order={1}>
                 <List>
                     <ListItem style={listItem}>Implementation of ReactiveX project</ListItem>
-                    <ListItem style={listItem}>Based on Gang of Four Observer pattern</ListItem>
+                    <ListItem style={listItem}>Based on Gang of Four's Observer pattern</ListItem>
                 </List>
             </Appear>
             <Notes>
@@ -58,6 +58,7 @@ const WhatIs = () => {
                 👉 it can be directed to the other directions using operators<br />
                 👉 [Next] - [List Item]<br />
                 👉 It has a few implementation in various languages like Rx C, Rx Java, Rx c# etc <br />
+                👉 Disclaimer: It's based on my knowledge and some content described are also based on my own experience <br />
             </Notes>
         </Container>
     );
