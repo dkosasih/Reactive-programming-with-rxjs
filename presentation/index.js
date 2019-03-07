@@ -2,11 +2,7 @@
 import React from 'react';
 
 // Import Spectacle Core tags
-import {
-    Deck,
-    Slide,
-    Notes
-} from 'spectacle';
+import { Deck, Slide, Notes } from 'spectacle';
 
 import '../assets/prism-syntax-highlight.css';
 
@@ -157,7 +153,7 @@ export default class Presentation extends React.Component {
                     <HoO />
                 </Slide>
                 <Slide transition={[]} bgColor="primary">
-                    <HoO withFormula={true}/>
+                    <HoO withFormula={true} />
                 </Slide>
                 <CodeSlide
                     notes={
@@ -166,7 +162,8 @@ export default class Presentation extends React.Component {
                             <br />
                             👉 subscribing click event
                             <br />
-                            👉 then setup the click even output and subscribing the interval observable
+                            👉 then setup the click even output and subscribing the interval
+                            observable
                             <br />
                             👉 then output the value together
                             <br />
@@ -179,21 +176,17 @@ export default class Presentation extends React.Component {
                     title="higher-order observable - concept"
                     transition={[]}
                     code={require('!!raw-loader!../assets/higher-order-observable.ts')}
-                    ranges={[
-                        { loc: [0, 4] },
-                        { loc: [5, 6] },
-                        { loc: [6, 9] },
-                        { loc: [12, 20] },
-                    ]}
+                    ranges={[{ loc: [0, 4] }, { loc: [5, 6] }, { loc: [6, 9] }, { loc: [12, 20] }]}
                 />
                 <CodeSlide
                     notes={
                         <div>
                             👉 declare variable
                             <br />
-                            👉 mapping the click event to do something and return a new interval observable
+                            👉 mapping the click event to do something and return a new interval
+                            observable
                             <br />
-                            👉 then use mergeAll to merge the result 
+                            👉 then use mergeAll to merge the result
                             <br />
                             👉 then output the value together
                             <br />
@@ -204,18 +197,15 @@ export default class Presentation extends React.Component {
                     title="higher-order observable - mergeAll + map"
                     transition={[]}
                     code={require('!!raw-loader!../assets/mergeAll.ts')}
-                    ranges={[
-                        { loc: [0, 4] },
-                        { loc: [5, 11] },
-                        { loc: [13, 16] },
-                    ]}
+                    ranges={[{ loc: [0, 4] }, { loc: [5, 11] }, { loc: [13, 16] }]}
                 />
                 <CodeSlide
                     notes={
                         <div>
                             👉 declare variable
                             <br />
-                            👉 instead of map and mergeAll separately - we combine both using mergeMap
+                            👉 instead of map and mergeAll separately - we combine both using
+                            mergeMap
                             <br />
                             👉 then output the value together
                             <br />
@@ -226,23 +216,20 @@ export default class Presentation extends React.Component {
                     title="higher-order observable - mergeMap"
                     transition={[]}
                     code={require('!!raw-loader!../assets/mergeMap.ts')}
-                    ranges={[
-                        { loc: [0, 4] },
-                        { loc: [6, 12] },
-                        { loc: [13, 14] },
-                    ]}
+                    ranges={[{ loc: [0, 4] }, { loc: [6, 12] }, { loc: [13, 14] }]}
                 />
                 <Slide transition={['fade']} bgColor="primary">
                     <MapOperators />
                 </Slide>
-                
+
                 <Slide transition={['fade']} bgColor="primary">
                     <Multicast />
                 </Slide>
                 <CodeSlide
                     notes={
-                        <div> 
-                            👉 take the our old friend interval creator - this time we take 10 so we have enought time later on
+                        <div>
+                            👉 take the our old friend interval creator - this time we take 5 and reduce the interval so we
+                            have enough time to play with
                             <br />
                             👉 Hot obs: multicast with Subject manually
                         </div>
@@ -252,15 +239,13 @@ export default class Presentation extends React.Component {
                     title="Multicast with Subject"
                     transition={[]}
                     code={require('!!raw-loader!../assets/multicast.js')}
-                    ranges={[
-                        { loc: [4, 8] },
-                        { loc: [9, 10] },
-                    ]}
+                    ranges={[{ loc: [4, 8] }, { loc: [9, 18] }]}
                 />
                 <CodeSlide
                     notes={
                         <div>
-                            👉 to make it more readable and reducing orchestration - there is an operator multicast <br />
+                            👉 to make it more readable and reducing orchestration - there is an
+                            operator multicast <br />
                             connect
                         </div>
                     }
@@ -269,14 +254,13 @@ export default class Presentation extends React.Component {
                     title="Multicast"
                     transition={[]}
                     code={require('!!raw-loader!../assets/multicast.js')}
-                    ranges={[
-                        { loc: [20, 30] },
-                     ]}
+                    ranges={[{ loc: [20, 28] }]}
                 />
                 <CodeSlide
                     notes={
                         <div>
-                            👉 publish is a thin wrapper which call multicast and pass the Subject along with it
+                            👉 `publish` is a thin wrapper which call multicast and pass the Subject
+                            along with it
                         </div>
                     }
                     lang="javascript"
@@ -284,18 +268,23 @@ export default class Presentation extends React.Component {
                     title="publish"
                     transition={[]}
                     code={require('!!raw-loader!../assets/multicast.js')}
-                    ranges={[
-                        { loc: [32, 43] },
-                     ]}
+                    ranges={[{ loc: [30, 39] }]}
                 />
                 <CodeSlide
                     notes={
                         <div>
-                            👉 going back to multicast  - will put refCount into play; we'll see how refCount differ
+                            👉 let's will put refCount into play; we'll see how refCount differ
                             <br />
-                            👉 multicast operator with refCount() to connect the observable automatically
-                            when first subscription is made - it will start emit, and count up for the next.
-                            after that, if all subscription dropped of - it will automatically unsubscribe and complete from the source
+                            👉 publish operator with refCount() to connect the observable
+                            automatically when first subscription is made - it will start emit, and
+                            count up for the next. after that, if all subscription dropped of - it
+                            will automatically unsubscribe and complete from the source
+                            <br />
+                            👉 now publish automatically pass in a subject and subscribe to it
+                            <br />
+                            let's have a look at share - it's a publish operator that passes
+                            
+                            <br />
                         </div>
                     }
                     lang="javascript"
@@ -303,12 +292,26 @@ export default class Presentation extends React.Component {
                     title="Multicast"
                     transition={[]}
                     code={require('!!raw-loader!../assets/multicast.js')}
-                    ranges={[
-                        { loc: [48, 62] },
-                        { loc: [65, 77] },
-                     ]}
+                    ranges={[{ loc: [43, 58] }, { loc: [60, 78] }]}
                 />
-                
+                <CodeSlide
+                    notes={
+                        <div>
+                            👉 Share is and operator that does publish and refCount together -
+                            however share is using factory function under the hood to create new
+                            subject everytime - which means if there is any subscription is made
+                            after refCount drops to 0 - new subject will be created and perform a
+                            new subscription to the observable
+                        </div>
+                    }
+                    lang="javascript"
+                    bgColor="secondary"
+                    title="Multicast"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/multicast.js')}
+                    ranges={[{ loc: [79, 89] }]}
+                />
+
                 <Slide transition={['fade']} bgColor="primary">
                     <References />
                 </Slide>
