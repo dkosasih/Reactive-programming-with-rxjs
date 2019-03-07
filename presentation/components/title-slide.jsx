@@ -6,6 +6,7 @@ import {
     Heading,
     Image,
     Slide,
+    Notes,
 } from 'spectacle';
 
 import { Container, Row, Column, ColumnSmall, Footer, } from './layout.jsx';
@@ -46,6 +47,15 @@ const Title = () => {
                     </Column>
                 </Footer>
             </Container>
+            <Notes>
+                🎓 Content:<br />
+                👉 What is RxJS <br />
+                👉 Why RxJS <br />
+                👉 Observable ...  <br />
+                👉 common operators in use based on my experience  <br />
+                👉 higher-order observables  <br />
+                👉 multicast observable <br />
+            </Notes>
         </Slide>
     );
 };

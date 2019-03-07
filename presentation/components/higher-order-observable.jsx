@@ -10,7 +10,7 @@ const listItem = {
     fontSize: '2rem'
 };
 
-const HoO = ({ withFormula = false, }) => {
+const HoO = ({ withFormula = false,}) => {
     const AppearContent = (
         <List>
             <ListItem style={listItem}>mergeMap{withFormula ? (<span> = mergeAll + map</span>) : null}</ListItem>
@@ -19,6 +19,7 @@ const HoO = ({ withFormula = false, }) => {
             <ListItem style={listItem}>exhaustMap{withFormula ? (<span> = exhaust + map</span>) : null}</ListItem>
         </List>
     )
+
     return (
         <Container>
             <Row>

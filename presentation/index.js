@@ -3,19 +3,9 @@ import React from 'react';
 
 // Import Spectacle Core tags
 import {
-    BlockQuote,
-    Cite,
     Deck,
-    Heading,
-    Image,
-    List,
-    ListItem,
-    Notes,
-    Quote,
     Slide,
-    Text,
-    Appear,
-    CodePane
+    Notes
 } from 'spectacle';
 
 import '../assets/prism-syntax-highlight.css';
@@ -31,6 +21,10 @@ import Why from './components/why.jsx';
 import Sorcery from './components/sorcery.jsx';
 import CommonOps from './components/common-operators.jsx';
 import HoO from './components/higher-order-observable.jsx';
+import MapOperators from './components/maps-compare.jsx';
+import Multicast from './components/multicast.jsx';
+import References from './components/References.jsx';
+import Thanks from './components/Thankyou.jsx';
 
 // Require CSS
 require('normalize.css');
@@ -108,13 +102,13 @@ export default class Presentation extends React.Component {
                     bgColor="secondary"
                     title="Unicast - Multicast"
                     transition={[]}
-                    code={require('!!raw-loader!../assets/multicast.js')}
+                    code={require('!!raw-loader!../assets/multicast-unicast.js')}
                     ranges={[
                         { loc: [1, 6] },
                         { loc: [7, 15] },
                         { loc: [16, 17] },
-                        { loc: [18, 27] },
-                        { loc: [28, 29] }
+                        { loc: [18, 28] },
+                        { loc: [29, 30] }
                     ]}
                 />
                 <Slide transition={['fade']} bgColor="primary">
@@ -170,17 +164,19 @@ export default class Presentation extends React.Component {
                         <div>
                             👉 declare variable
                             <br />
-                            👉 talk about subscribeing click event
+                            👉 subscribing click event
                             <br />
                             👉 then setup the click even output and subscribing the interval observable
                             <br />
                             👉 then output the value together
                             <br />
+                            👉 but - can you start to see the callback hell pattern forming?
+                            <br />
                         </div>
                     }
                     lang="ts"
                     bgColor="secondary"
-                    title="higher-order observable"
+                    title="higher-order observable - concept"
                     transition={[]}
                     code={require('!!raw-loader!../assets/higher-order-observable.ts')}
                     ranges={[
@@ -190,6 +186,135 @@ export default class Presentation extends React.Component {
                         { loc: [12, 20] },
                     ]}
                 />
+                <CodeSlide
+                    notes={
+                        <div>
+                            👉 declare variable
+                            <br />
+                            👉 mapping the click event to do something and return a new interval observable
+                            <br />
+                            👉 then use mergeAll to merge the result 
+                            <br />
+                            👉 then output the value together
+                            <br />
+                        </div>
+                    }
+                    lang="ts"
+                    bgColor="secondary"
+                    title="higher-order observable - mergeAll + map"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/mergeAll.ts')}
+                    ranges={[
+                        { loc: [0, 4] },
+                        { loc: [5, 11] },
+                        { loc: [13, 16] },
+                    ]}
+                />
+                <CodeSlide
+                    notes={
+                        <div>
+                            👉 declare variable
+                            <br />
+                            👉 instead of map and mergeAll separately - we combine both using mergeMap
+                            <br />
+                            👉 then output the value together
+                            <br />
+                        </div>
+                    }
+                    lang="ts"
+                    bgColor="secondary"
+                    title="higher-order observable - mergeMap"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/mergeMap.ts')}
+                    ranges={[
+                        { loc: [0, 4] },
+                        { loc: [6, 12] },
+                        { loc: [13, 14] },
+                    ]}
+                />
+                <Slide transition={['fade']} bgColor="primary">
+                    <MapOperators />
+                </Slide>
+                
+                <Slide transition={['fade']} bgColor="primary">
+                    <Multicast />
+                </Slide>
+                <CodeSlide
+                    notes={
+                        <div> 
+                            👉 take the our old friend interval creator - this time we take 10 so we have enought time later on
+                            <br />
+                            👉 Hot obs: multicast with Subject manually
+                        </div>
+                    }
+                    lang="javascript"
+                    bgColor="secondary"
+                    title="Multicast with Subject"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/multicast.js')}
+                    ranges={[
+                        { loc: [4, 8] },
+                        { loc: [9, 10] },
+                    ]}
+                />
+                <CodeSlide
+                    notes={
+                        <div>
+                            👉 to make it more readable and reducing orchestration - there is an operator multicast <br />
+                            connect
+                        </div>
+                    }
+                    lang="javascript"
+                    bgColor="secondary"
+                    title="Multicast"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/multicast.js')}
+                    ranges={[
+                        { loc: [20, 30] },
+                     ]}
+                />
+                <CodeSlide
+                    notes={
+                        <div>
+                            👉 publish is a thin wrapper which call multicast and pass the Subject along with it
+                        </div>
+                    }
+                    lang="javascript"
+                    bgColor="secondary"
+                    title="publish"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/multicast.js')}
+                    ranges={[
+                        { loc: [32, 43] },
+                     ]}
+                />
+                <CodeSlide
+                    notes={
+                        <div>
+                            👉 going back to multicast  - will put refCount into play; we'll see how refCount differ
+                            <br />
+                            👉 multicast operator with refCount() to connect the observable automatically
+                            when first subscription is made - it will start emit, and count up for the next.
+                            after that, if all subscription dropped of - it will automatically unsubscribe and complete from the source
+                        </div>
+                    }
+                    lang="javascript"
+                    bgColor="secondary"
+                    title="Multicast"
+                    transition={[]}
+                    code={require('!!raw-loader!../assets/multicast.js')}
+                    ranges={[
+                        { loc: [48, 62] },
+                        { loc: [65, 77] },
+                     ]}
+                />
+                
+                <Slide transition={['fade']} bgColor="primary">
+                    <References />
+                </Slide>
+                <Slide transition={['fade']} bgColor="primary">
+                    <Thanks />
+                </Slide>
             </Deck>
         );
     }
