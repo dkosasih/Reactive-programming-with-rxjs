@@ -10,6 +10,10 @@ const leftAlignText = {
     textAlign: 'left'
 };
 
+const highlight = {
+    backgroundColor: 'Darkgrey'
+};
+
 const ComparisonBlock = styled.div`
     background-color: grey;
     padding: 10px;
@@ -18,7 +22,7 @@ const ComparisonBlock = styled.div`
     flex-direction: column;
 `;
 
-const Why = ({ withAppear = true }) => {
+const Why = ({ withAppear = true, currentIndex = 0 }) => {
     const Content = (
         <Row style={{ justifyContent: 'space-evenly', paddingTop: '50px', alignItems: 'stretch' }}>
             <ComparisonBlock style={{ flex: '0 0 auto' }}>
@@ -26,20 +30,20 @@ const Why = ({ withAppear = true }) => {
                     <strong>Observable</strong>
                 </div>
                 <div>&nbsp;</div>
-                <div style={leftAlignText}>👓 Stream of value</div>
-                <div style={leftAlignText}>👓 Cancellable</div>
-                <div style={leftAlignText}>👓 Lazy</div>
-                <div style={leftAlignText}>👓 Unicast</div>
+                <div style={currentIndex === 0 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>👓 Stream of value</div>
+                <div style={currentIndex && currentIndex === 1 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>👓 Cancellable</div>
+                <div style={currentIndex && currentIndex === 2 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>👓 Lazy</div>
+                <div style={currentIndex && currentIndex === 3 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>👓 Unicast</div>
             </ComparisonBlock>
             <ComparisonBlock style={{ flex: '0 0 auto' }}>
                 <div>
                     <strong>Promise</strong>
                 </div>
                 <div>&nbsp;</div>
-                <div style={leftAlignText}>🤞 Read-only view to a single future value</div>
-                <div style={leftAlignText}>🤞 Non-cancellable</div>
-                <div style={leftAlignText}>🤞 Eager</div>
-                <div style={leftAlignText}>🤞 Multicast</div>
+                <div style={currentIndex === 0 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>🤞 Read-only view to a single future value</div>
+                <div style={currentIndex && currentIndex === 1 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>🤞 Non-cancellable</div>
+                <div style={currentIndex && currentIndex === 2 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>🤞 Eager</div>
+                <div style={currentIndex && currentIndex === 3 ? Object.assign({}, leftAlignText, highlight) : leftAlignText }>🤞 Multicast</div>
             </ComparisonBlock>
         </Row>
     );

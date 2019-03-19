@@ -47,7 +47,10 @@ export default class Presentation extends React.Component {
                     <WhatIs />
                 </Slide>
                 <Slide transition={['fade']} bgColor="primary">
-                    <Why />
+                    <Why currentIndex={0} />
+                </Slide>
+                <Slide transition={[]} bgColor="primary">
+                    <Why withAppear={false} currentIndex={1} />
                 </Slide>
                 <CodeSlide
                     notes="Cancellable: 'Handling processed value' is not being processed because it has been unsubscribed and cancelled"
@@ -64,7 +67,7 @@ export default class Presentation extends React.Component {
                     ]}
                 />
                 <Slide bgColor="primary" transition={[]}>
-                    <Why withAppear={false} />
+                    <Why withAppear={false} currentIndex={2} />
                 </Slide>
                 <CodeSlide
                     notes="Lazy-earger: Promise: will execute right after the line is declared; observable will not do anything until it's being subscribed"
@@ -81,7 +84,7 @@ export default class Presentation extends React.Component {
                     ]}
                 />
                 <Slide bgColor="primary" transition={[]}>
-                    <Why withAppear={false} />
+                    <Why withAppear={false} currentIndex={3} />
                 </Slide>
                 <CodeSlide
                     notes={
