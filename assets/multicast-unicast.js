@@ -1,8 +1,7 @@
 // Multicast vs Unicast
-export default (function () {
-    function getRandom() {
-        return Math.floor(Math.random() * Math.floor(100));
-    }
+
+function getRandom() {
+    return Math.floor(Math.random() * Math.floor(100));
 }
 
 const promise = new Promise(resolve => {

@@ -103,11 +103,11 @@ export default class Presentation extends React.Component {
                     transition={[]}
                     code={require('!!raw-loader!../assets/multicast-unicast.js')}
                     ranges={[
-                        { loc: [1, 6] },
-                        { loc: [7, 15] },
-                        { loc: [16, 17] },
-                        { loc: [18, 28] },
-                        { loc: [29, 30] }
+                        { loc: [2, 5] },
+                        { loc: [6, 14] },
+                        { loc: [15, 16] },
+                        { loc: [17, 26] },
+                        { loc: [28, 29] }
                     ]}
                 />
                 <Slide transition={['fade']} bgColor="primary">
